@@ -1,0 +1,24 @@
+{
+  "name": "raf-run",
+  "version": "0.0.1",
+  "description": "requestAnimationFrame based muilti-task runner and handy a setTimeout/setInterval replacement",
+  "main": "src/Runner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zlebruh/raf-run.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zlebruh/raf-run/issues"
+  },
+  "homepage": "https://github.com/zlebruh/raf-run#readme",
+  "dependencies": {
+    "json-valid-3k": "^1.1.0-c",
+    "zletils": "^0.0.1-c"
+  }
+}
