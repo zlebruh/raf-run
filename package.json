@@ -1,6 +1,6 @@
 {
   "name": "raf-run",
-  "version": "0.0.1",
+  "version": "0.0.1a",
   "description": "requestAnimationFrame based muilti-task runner and handy a setTimeout/setInterval replacement",
   "main": "src/Runner.js",
   "scripts": {
