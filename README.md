@@ -69,6 +69,11 @@ const runner = new Runner({
 ```javascript
 runner.stop();
 runner.start();
+```
+
+## Dynamic tick rate
+The default interval between each Runner tick is 1000 ms. Here is how to change it
+```javascript
 runner.heartbeat = 3000; // The setter only accepts Number
 ```
 
@@ -135,49 +140,4 @@ task_a.disable();
 // If confused, look at "Adding tasks" again.
 task_a.interval = 3000; // Task is now being executed every 3 seconds
 task_a.interval = 300; // Task is now being executed every 300 ms
-```
-
-## Continue reading if this works for you.
-
-<hr />
-
-## Purpose
-With `raf-run` you can easily **add/pause/remove** tasks that have the combined characteristics of *setInterval* and *setTimeout*, plus the ability to scale your global operation, including individual tasks, on demand.
-
-That means you can ***change*** you **global** and **task-level** intervals at any point time
-
-Say, you're working with canvas/svg animations and you want to update/animate an arbitrary amount of things. But what if you need to speed up or slow down each update based on demand, user focus, or something else? You can do that.
-
-Or you're working on a web game. Nothing easier than adding your draw operations to `raf-run`. Wanna change the maximum frame? Yes, you can. Want to have a diffrent frame rate for your main screen and your mini map? Duh, it's just another task. And since `raf-run` is **requestAnimationFrame** based, you can be sure your game will not eat resources when the tab is not active.
-
-## Features - Runner
-  ### start/stop
-  - Ability to **start** or **stop** the Runner at any point in time
-  - If stopped, all execution is suspended. No more timers!
-  - When started again, tasks that have missed their time window will be executed immediatelly. Business as usual.
-
-  ### internal tick rate
-  - By default, the tick rate is now set to 0ms
-  - This means `raf-run` is checking for tasks to run every quarter of a second.
-  - You may increase or decrease this value according to your needs.
-  - I have found that 250ms is the sweet spot that doesn't affect in a meaningful way even low power devices such as phones and embedded systems.
-  - However, that's nowhere near enough for high performance tasks such as games, graph updates, animations, etc. Choose wisely based on your needs, cycles are not always free.
-  - **NOTE**: increasing the time between each `raf-run` tick will have an effect on recurring tasks that execute faster. Individual tasks cannot override this behaviour
-
-## Features - Task
-  ### enable/disable
-  - You can **enable** or **disable** any task at any given time.
-  - If a task has missed its time window will be executed while being disabled, it will be executed on first opportunity when enabled again. Business as usual.
-  ### change interval time in real time
-  - Recurring tasks can have their interval changed at any point in time
-  - Say you want to increace/decrease the max FPS of your canvas animation based on some changing conditions
-  - **NOTE**: Recurring tasks cannot execute more often than the `raf-run` instance itself.
-  - Just edit the code if it's not doing what you want.
-
-## Dynamic tick rate
-The default interval between each Runner tick is 0.
-
-### Here is how to change it
-```javascript
-runner.heartbeat = 3000; // The setter only accepts Number
 ```

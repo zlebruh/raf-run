@@ -1,12 +1,12 @@
-function getRAFFallback() {
+function getRAFFallback(heartbeat) {
   return (callback) => {
-    setTimeout(callback, min);
+    setTimeout(callback, heartbeat);
   };
 }
 
-export function getRAF(forceFallback) {
+export function getRAF(forceFallback = false, heartbeat) {
   if (forceFallback === true) {
-    return getRAFFallback();
+    return getRAFFallback(heartbeat);
   }
 
   const GLOBAL = window || {};
@@ -15,10 +15,5 @@ export function getRAF(forceFallback) {
     || GLOBAL.oRequestAnimationFrame
     || GLOBAL.msRequestAnimationFrame
     || GLOBAL.mozRequestAnimationFrame
-    || GLOBAL.webkitRequestAnimationFrame || getRAFFallback();
-}
-
-export function changeRAF(forceFallback) {
-  RAF = getRAF(forceFallback);
-  return RAF;
+    || GLOBAL.webkitRequestAnimationFrame || getRAFFallback(heartbeat);
 }

@@ -1,6 +1,6 @@
 import { typedProp } from 'zletils';
 import { validate } from 'json-valid-3k';
-import { getRAF, changeRAF } from './uncore/raf';
+import { getRAF } from './uncore/raf';
 import Task from './Task.js';
 import RunHistory from './RunHistory';
 import { toObjectProps } from './uncore/utils';
@@ -9,7 +9,7 @@ import { RunnerSchema } from './uncore/schemas';
 
 // Local stuff
 let running = false;
-let RAF = getRAF(); // eslint-disable-line
+let RAF = getRAF(false, 1000); // eslint-disable-line
 
 export default class Runner {
   constructor(props = null) {
@@ -34,7 +34,7 @@ export default class Runner {
     // The method skips subscribtions on keepAlive: false
     this._subscribe();
 
-    changeRAF();
+    this._changeRAF();
   }
 
   // ########### Getters ###########
@@ -101,11 +101,6 @@ export default class Runner {
     return false;
   }
 
-  /**
-  * @param {String} name
-  * @param {Number} val
-  * @returns {Boolean}
-  */
   changeTaskInterval(name, val) {
     try {
       const task = this.items[name];
@@ -153,7 +148,7 @@ export default class Runner {
   }
 
   _handeTabChange() {
-    changeRAF(document.hidden);
+    this._changeRAF(document.hidden);
     this._loop();
   }
 
@@ -161,5 +156,10 @@ export default class Runner {
     if (this.keepAlive === false) return false
     document.addEventListener('visibilitychange', this.onTabChange);
     return true;
+  }
+
+  _changeRAF(forceFallback) {
+    RAF = getRAF(forceFallback, this.heartbeat);
+    return RAF;
   }
 }

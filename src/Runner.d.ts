@@ -29,5 +29,6 @@ declare module 'raf-run' {
     private _loop(): void;
     private _handeTabChange(): void;
     private _subscribe(): Boolean;
+    private _changeRAF(forceFallback: Boolean): Function;
   }
 }

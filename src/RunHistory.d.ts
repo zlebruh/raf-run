@@ -12,5 +12,6 @@ declare module 'RunHistory' {
     get last(): Number|RunHistorySnapshot;
     delta(now?: Number): Number
     push(stamp: Number): Boolean|any;
+    static changeRAF(forceFallback: Boolean): Function;
   }
 }

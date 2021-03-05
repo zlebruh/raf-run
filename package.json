@@ -1,6 +1,6 @@
 {
   "name": "raf-run",
-  "version": "0.0.1a",
+  "version": "0.0.1b",
   "description": "requestAnimationFrame based muilti-task runner and handy a setTimeout/setInterval replacement",
   "main": "src/Runner.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zlebruh/raf-run/issues"
   },

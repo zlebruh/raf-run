@@ -1,4 +1,4 @@
-import { typedProp, typedProps } from 'zletils';
+import { typedProps } from 'zletils';
 import { validate } from 'json-valid-3k';
 import { toObjectProps } from './uncore/utils';
 import RunHistory from './RunHistory';
