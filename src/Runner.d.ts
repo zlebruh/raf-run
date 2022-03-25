@@ -8,6 +8,7 @@ declare module 'raf-run' {
     });
 
     get running(): Boolean;
+    get names(): String[];
 
     has(name: String): Boolean;
     start(): Runner;
@@ -20,6 +21,7 @@ declare module 'raf-run' {
       timeout?: Number;
       interval?: Number;
     }): Boolean;
+    empty(): Boolean;
     remove(name: String): Boolean;
     enableTask(name: String): Boolean;
     disableTask(name: String): Boolean;
