@@ -15,10 +15,8 @@ export default class RunHistory extends Array {
   constructor(props = {}) {
     super()
 
-    const { size = 10 } = props
-
     Object.defineProperties(this, {
-      ...toObjectProps({ size, ...props, created: Date.now() }),
+      ...toObjectProps({ ...props, created: Date.now() }),
       ticks: { value: 0, writable: true },
     })
   }
