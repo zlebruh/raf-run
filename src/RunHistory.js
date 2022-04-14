@@ -12,11 +12,13 @@ class RunHistorySnapshot {
 }
 
 export default class RunHistory extends Array {
-  constructor(props) {
+  constructor(props = {}) {
     super()
 
+    const { size = 10 } = props
+
     Object.defineProperties(this, {
-      ...toObjectProps({ ...props, created: Date.now() }),
+      ...toObjectProps({ size, ...props, created: Date.now() }),
       ticks: { value: 0, writable: true },
     })
   }
