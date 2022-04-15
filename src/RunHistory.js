@@ -12,7 +12,7 @@ class RunHistorySnapshot {
 }
 
 export default class RunHistory extends Array {
-  constructor(props) {
+  constructor(props = {}) {
     super()
 
     Object.defineProperties(this, {

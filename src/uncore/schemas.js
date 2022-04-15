@@ -1,9 +1,9 @@
 const HistorySchema = {
   type: 'Object',
-  optional: true,
   props: {
     size: { type: 'Number', default: 10 },
-  }
+  },
+  default: { size: 10 }
 };
 
 const boo = 'Boolean'
